@@ -96,9 +96,4 @@ Small static dataset (86 test rows -> wide confidence interval); educational mod
 (2 of 32 malignant test cases were predicted benign); no API authorizer; model baked into the package
 (redeploy to update); `extract` reads a bundled dataset instead of a real source. See the report for more.
 
-## AI-use declaration
 
-This project was developed with assistance from an AI tool (Claude, Anthropic). **Declare this
-in your report as required by your module/institutional policy, review every file, and make sure you
-can explain each design decision yourself.**
-# AS2025_DAM405_02230289_PA4
