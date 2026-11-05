@@ -1,0 +1,48 @@
+{
+  "note": "local machine timings; not AWS cold-start numbers",
+  "python": "3.12.3",
+  "n_cold_runs": 20,
+  "n_warm_invocations": 2000,
+  "handler_package_zip_bytes": 3385,
+  "handler_cold": {
+    "import_ms": {
+      "median": 7.93,
+      "p95": 9.42,
+      "min": 6.63
+    },
+    "first_invoke_ms": {
+      "median": 0.15,
+      "p95": 0.19,
+      "min": 0.12
+    },
+    "process_wall_ms": {
+      "median": 30.35,
+      "p95": 34.83,
+      "min": 27.59
+    }
+  },
+  "sklearn_cold": {
+    "import_ms": {
+      "median": 1025.67,
+      "p95": 1186.82,
+      "min": 953.95
+    },
+    "first_invoke_ms": {
+      "median": 0.45,
+      "p95": 0.6,
+      "min": 0.36
+    },
+    "process_wall_ms": {
+      "median": 1205.89,
+      "p95": 1364.19,
+      "min": 1121.93
+    }
+  },
+  "sklearn_stack_installed_mb": 157.6,
+  "warm_invoke_us": {
+    "p50": 38.2,
+    "p95": 62.3,
+    "p99": 81.8,
+    "max": 153.0
+  }
+}

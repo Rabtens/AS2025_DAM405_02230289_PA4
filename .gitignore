@@ -1,0 +1,10 @@
+.venv/
+.venv-sam/
+.airflow/
+.aws-sam/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/
+build/
+# NOTE: lambda_fn/model.json and events/ ARE committed so `sam build` works out of the box.

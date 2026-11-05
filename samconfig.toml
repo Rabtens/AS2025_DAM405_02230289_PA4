@@ -1,0 +1,19 @@
+# SAM CLI defaults. No credentials live here: the AWS CLI/SAM read them from the
+# environment, an AWS profile, or an IAM role.
+version = 0.1
+
+[default.global.parameters]
+stack_name = "tumor-classifier"
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.deploy.parameters]
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = true
+resolve_s3 = true
+region = "ap-south-1"
+
+[default.validate.parameters]
+lint = true

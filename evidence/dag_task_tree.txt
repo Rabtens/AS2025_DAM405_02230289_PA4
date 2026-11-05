@@ -1,0 +1,14 @@
+<Task: extract_data>
+    <Task: validate_data>
+        <Task: transform_data>
+            <Task: evaluate_model>
+                <Task: package_model>
+                    <Task: deploy_function>
+            <Task: package_model>
+                <Task: deploy_function>
+            <Task: train_model>
+                <Task: evaluate_model>
+                    <Task: package_model>
+                        <Task: deploy_function>
+                <Task: package_model>
+                    <Task: deploy_function>

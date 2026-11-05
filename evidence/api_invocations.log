@@ -1,0 +1,16 @@
+$ curl -X POST localhost:3010/predict -d @events/benign_body.json     # 1st request = cold start
+{"prediction": {"label": "benign", "label_id": 1, "probability_benign": 0.974789, "confidence": 0.974789}, "model_version": "2026-11-04-9d468ebb", "cold_start": true, "latency_ms": 0.077}
+HTTP 200
+
+$ curl -X POST localhost:3010/predict -d @events/malignant_body.json  # warm
+{"prediction": {"label": "malignant", "label_id": 0, "probability_benign": 0.001952, "confidence": 0.998048}, "model_version": "2026-11-04-9d468ebb", "cold_start": false, "latency_ms": 0.043}
+HTTP 200
+
+$ curl -X POST localhost:3010/predict -d '{"features":[1,2,3]}'      # invalid input
+{"error": "expected 30 features, got 3"}
+HTTP 400
+
+$ curl localhost:3010/predict                                         # route not defined
+{"message": "Not Found"}
+HTTP 404
+

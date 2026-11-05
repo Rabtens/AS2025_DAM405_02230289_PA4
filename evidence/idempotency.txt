@@ -1,0 +1,12 @@
+Files hashed after run 1: 9   after re-run of the same date: 9
+RESULT: byte-identical (idempotent)
+
+fc57cc45d73c9ad964231a79f7ec932e589a4d18e7130c189a2c2ea264eb9403  ./metrics/ds=2026-11-04/metrics.json
+63478e524fb0c426a746c748d06002b44fbe6c0b5b93b196f4c046c4ee1283f2  ./models/ds=2026-11-04/model.json
+50d4702992d7968d3b17723c3f9e736c1227ac0d031ab329f4b3c3a792317044  ./processed/ds=2026-11-04/scaler.json
+43dde8aa190ca3cff6774569c18dd9ac5d993adc85a900e4630210981b18f84d  ./processed/ds=2026-11-04/test.csv
+289512b0b0e525198fc814ccf4b375773887d44a74dd9e439f7474d6487ef3dd  ./processed/ds=2026-11-04/test_raw.csv
+841b05731f32d8eb63df71f4d49a412327b36b7ffc4d58f62f66f15126fc36a5  ./processed/ds=2026-11-04/train.csv
+bf75b5d0e744c700e216e43e7e708e183a870738e9551926e3fe219ba75f8959  ./processed/ds=2026-11-04/val.csv
+75a1d74a59df9cb0a78ecc0a36085bf8a85239557f178d3b8d758e88b26416e1  ./raw/ds=2026-11-04/tumor.csv
+260e6752fe0722767767d7a87663889350fe6fca65b189de4f5d76f305cdc18e  ./validation/ds=2026-11-04/result.json

@@ -1,0 +1,31 @@
+[2026-11-04T17:40:07.173+0600] {dag.py:4435} INFO - dagrun id: tumor_pipeline
+[2026-11-04T17:40:07.197+0600] {dag.py:4451} INFO - created dagrun <DagRun tumor_pipeline @ 2026-11-05 00:00:00+00:00: manual__2026-11-05T00:00:00+00:00, state:running, queued_at: None. externally triggered: False>
+[2026-11-04T17:40:07.215+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=extract_data map_index=-1
+[2026-11-04T17:40:07.215+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.extract_data manual__2026-11-05T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:40:07.266+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='extract_data' AIRFLOW_CTX_EXECUTION_DATE='2026-11-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-05T00:00:00+00:00'
+[2026-11-04T17:40:07.268+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:40:09.588+0600] {registry.py:290} INFO - Multiple declarations of metric table.column_types for engine PandasExecutionEngine.
+[2026-11-04T17:40:09.588+0600] {registry.py:290} INFO - Multiple declarations of metric table.column_types for engine SparkDFExecutionEngine.
+[2026-11-04T17:40:09.968+0600] {steps.py:71} INFO - extract: wrote 569 rows x 31 cols to ./data/raw/ds=2026-11-05/tumor.csv
+[2026-11-04T17:40:09.969+0600] {python.py:240} INFO - Done. Returned value was: ./data/raw/ds=2026-11-05/tumor.csv
+[2026-11-04T17:40:09.980+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:40:09.980+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=extract_data, run_id=manual__2026-11-05T00:00:00+00:00, execution_date=20261105T000000, start_date=, end_date=20261104T114009
+[2026-11-04T17:40:09.991+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=extract_data map_index=-1
+[2026-11-04T17:40:10.005+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=validate_data map_index=-1
+[2026-11-04T17:40:10.006+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.validate_data manual__2026-11-05T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:40:10.036+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='validate_data' AIRFLOW_CTX_EXECUTION_DATE='2026-11-05T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-05T00:00:00+00:00'
+[2026-11-04T17:40:10.037+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:40:10.041+0600] {base.py:1402} INFO - Created temporary directory '/tmp/tmp0r29r2jo' for ephemeral docs site
+[2026-11-04T17:40:10.042+0600] {config.py:191} INFO - Loading 'datasources' ->
+[2026-11-04T17:40:10.409+0600] {steps.py:86} INFO - validate: 64/67 expectations passed (success=False) -> ./data/validation/ds=2026-11-05/result.json
+[2026-11-04T17:40:10.410+0600] {tumor_pipeline_dag.py:72} INFO - Great Expectations: 64/67 expectations passed
+[2026-11-04T17:40:10.410+0600] {tumor_pipeline_dag.py:78} ERROR - Quality gate FAILED. First failures: [{"expectation": "expect_column_values_to_not_be_null", "column": "mean radius", "rule": {}, "observed": {"unexpected_count": 28, "unexpected_percent": 4.92091388400703}}, {"expectation": "expect_column_values_to_be_between", "column": "mean area", "rule": {"min_value": 50.0, "max_value": 3000.0}, "observed": {"unexpected_count": 10, "unexpected_percent": 1.7574692442882252}}, {"expectation": "expect_column_values_to_be_between", "column": "mean area", "rule": {"min_value": 0.0}, "observed": {"unexpected_count": 10, "unexpected_percent": 1.7574692442882252}}]
+airflow.exceptions.AirflowFailException: Data-quality gate failed (3 expectations); downstream tasks blocked.
+[2026-11-04T17:40:10.410+0600] {taskinstance.py:3337} ERROR - Task failed with exception
+[2026-11-04T17:40:10.415+0600] {taskinstance.py:1242} INFO - Immediate failure requested. Marking task as FAILED. dag_id=tumor_pipeline, task_id=validate_data, run_id=manual__2026-11-05T00:00:00+00:00, execution_date=20261105T000000, start_date=, end_date=20261104T114010
+[2026-11-04T17:40:10.426+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:40:10.427+0600] {dag.py:3090} ERROR - Task failed; ti=<TaskInstance: tumor_pipeline.validate_data manual__2026-11-05T00:00:00+00:00 [failed]>
+[2026-11-04T17:40:10.439+0600] {dag.py:3061} WARNING - No tasks to run. unrunnable tasks: {<TaskInstance: tumor_pipeline.evaluate_model manual__2026-11-05T00:00:00+00:00 [None]>, <TaskInstance: tumor_pipeline.deploy_function manual__2026-11-05T00:00:00+00:00 [None]>, <TaskInstance: tumor_pipeline.train_model manual__2026-11-05T00:00:00+00:00 [None]>, <TaskInstance: tumor_pipeline.package_model manual__2026-11-05T00:00:00+00:00 [None]>}
+[2026-11-04T17:40:11.455+0600] {dag.py:3061} WARNING - No tasks to run. unrunnable tasks: {<TaskInstance: tumor_pipeline.deploy_function manual__2026-11-05T00:00:00+00:00 [None]>}
+[2026-11-04T17:40:12.470+0600] {dagrun.py:823} ERROR - Marking run <DagRun tumor_pipeline @ 2026-11-05 00:00:00+00:00: manual__2026-11-05T00:00:00+00:00, state:running, queued_at: None. externally triggered: False> failed
+[2026-11-04T17:40:12.471+0600] {dagrun.py:905} INFO - DagRun Finished: dag_id=tumor_pipeline, execution_date=2026-11-05 00:00:00+00:00, run_id=manual__2026-11-05T00:00:00+00:00, run_start_date=2026-11-05 00:00:00+00:00, run_end_date=2026-11-04 11:40:12.471157+00:00, run_duration=-44387.528843, state=failed, external_trigger=False, run_type=manual, data_interval_start=2026-11-04 00:00:00+00:00, data_interval_end=2026-11-05 00:00:00+00:00, dag_hash=None

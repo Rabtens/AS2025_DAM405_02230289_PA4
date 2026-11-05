@@ -1,0 +1,16 @@
+$ cfn-lint template.yaml
+(no findings)
+
+$ sam validate --lint
+/home/claude/mlops-serverless/template.yaml is a valid SAM Template
+
+$ sam build
+Build Succeeded
+Built Artifacts  : .aws-sam/build
+
+$ ls -l .aws-sam/build/InferenceFunction/
+-rw-r--r-- 1 root root 6294 Nov  4 17:30 handler.py
+-rw-r--r-- 1 root root 1914 Nov  4 17:40 model.json
+-rw-r--r-- 1 root root   74 Nov  4 17:32 requirements.txt
+
+build artefact size: 8282 bytes

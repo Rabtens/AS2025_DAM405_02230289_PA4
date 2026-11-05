@@ -1,0 +1,21 @@
+{
+  "accuracy": 0.976744,
+  "confusion_matrix": [
+    [
+      30,
+      2
+    ],
+    [
+      0,
+      54
+    ]
+  ],
+  "f1_macro": 0.97478,
+  "min_accuracy_required": 0.93,
+  "model_version": "2026-11-04-9d468ebb",
+  "n_test": 86,
+  "passed_threshold": true,
+  "precision_macro": 0.982143,
+  "recall_macro": 0.96875,
+  "roc_auc": 0.993634
+}

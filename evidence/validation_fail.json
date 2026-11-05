@@ -1,0 +1,41 @@
+{
+  "evaluated_expectations": 67,
+  "failures": [
+    {
+      "column": "mean radius",
+      "expectation": "expect_column_values_to_not_be_null",
+      "observed": {
+        "unexpected_count": 28,
+        "unexpected_percent": 4.92091388400703
+      },
+      "rule": {}
+    },
+    {
+      "column": "mean area",
+      "expectation": "expect_column_values_to_be_between",
+      "observed": {
+        "unexpected_count": 10,
+        "unexpected_percent": 1.7574692442882252
+      },
+      "rule": {
+        "max_value": 3000.0,
+        "min_value": 50.0
+      }
+    },
+    {
+      "column": "mean area",
+      "expectation": "expect_column_values_to_be_between",
+      "observed": {
+        "unexpected_count": 10,
+        "unexpected_percent": 1.7574692442882252
+      },
+      "rule": {
+        "min_value": 0.0
+      }
+    }
+  ],
+  "n_rows": 569,
+  "success": false,
+  "successful_expectations": 64,
+  "unsuccessful_expectations": 3
+}

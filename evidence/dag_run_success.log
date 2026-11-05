@@ -1,0 +1,81 @@
+[2026-11-04T17:39:54.221+0600] {dag.py:4435} INFO - dagrun id: tumor_pipeline
+[2026-11-04T17:39:54.248+0600] {dag.py:4451} INFO - created dagrun <DagRun tumor_pipeline @ 2026-11-04 00:00:00+00:00: manual__2026-11-04T00:00:00+00:00, state:running, queued_at: None. externally triggered: False>
+[2026-11-04T17:39:54.264+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=extract_data map_index=-1
+[2026-11-04T17:39:54.265+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.extract_data manual__2026-11-04T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:39:54.298+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='extract_data' AIRFLOW_CTX_EXECUTION_DATE='2026-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-04T00:00:00+00:00'
+[2026-11-04T17:39:54.299+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:39:56.738+0600] {registry.py:290} INFO - Multiple declarations of metric table.column_types for engine PandasExecutionEngine.
+[2026-11-04T17:39:56.738+0600] {registry.py:290} INFO - Multiple declarations of metric table.column_types for engine SparkDFExecutionEngine.
+[2026-11-04T17:39:57.077+0600] {steps.py:71} INFO - extract: wrote 569 rows x 31 cols to ./data/raw/ds=2026-11-04/tumor.csv
+[2026-11-04T17:39:57.078+0600] {python.py:240} INFO - Done. Returned value was: ./data/raw/ds=2026-11-04/tumor.csv
+[2026-11-04T17:39:57.090+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:39:57.090+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=extract_data, run_id=manual__2026-11-04T00:00:00+00:00, execution_date=20261104T000000, start_date=, end_date=20261104T113957
+[2026-11-04T17:39:57.101+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=extract_data map_index=-1
+[2026-11-04T17:39:57.114+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=validate_data map_index=-1
+[2026-11-04T17:39:57.114+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.validate_data manual__2026-11-04T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:39:57.135+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='validate_data' AIRFLOW_CTX_EXECUTION_DATE='2026-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-04T00:00:00+00:00'
+[2026-11-04T17:39:57.136+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:39:57.139+0600] {base.py:1402} INFO - Created temporary directory '/tmp/tmpton2eeml' for ephemeral docs site
+[2026-11-04T17:39:57.140+0600] {config.py:191} INFO - Loading 'datasources' ->
+[2026-11-04T17:39:57.520+0600] {steps.py:86} INFO - validate: 67/67 expectations passed (success=True) -> ./data/validation/ds=2026-11-04/result.json
+[2026-11-04T17:39:57.521+0600] {tumor_pipeline_dag.py:72} INFO - Great Expectations: 67/67 expectations passed
+[2026-11-04T17:39:57.521+0600] {python.py:240} INFO - Done. Returned value was: ./data/raw/ds=2026-11-04/tumor.csv
+[2026-11-04T17:39:57.529+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:39:57.529+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=validate_data, run_id=manual__2026-11-04T00:00:00+00:00, execution_date=20261104T000000, start_date=, end_date=20261104T113957
+[2026-11-04T17:39:57.539+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=validate_data map_index=-1
+[2026-11-04T17:39:57.551+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=transform_data map_index=-1
+[2026-11-04T17:39:57.552+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.transform_data manual__2026-11-04T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:39:57.570+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='transform_data' AIRFLOW_CTX_EXECUTION_DATE='2026-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-04T00:00:00+00:00'
+[2026-11-04T17:39:57.570+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:39:57.598+0600] {steps.py:128} INFO - transform: train=398 val=85 test=86 -> ./data/processed/ds=2026-11-04
+[2026-11-04T17:39:57.598+0600] {python.py:240} INFO - Done. Returned value was: ./data/processed/ds=2026-11-04
+[2026-11-04T17:39:57.604+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:39:57.605+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=transform_data, run_id=manual__2026-11-04T00:00:00+00:00, execution_date=20261104T000000, start_date=, end_date=20261104T113957
+[2026-11-04T17:39:57.613+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=transform_data map_index=-1
+[2026-11-04T17:39:57.626+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=train_model map_index=-1
+[2026-11-04T17:39:57.626+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.train_model manual__2026-11-04T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:39:57.648+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='train_model' AIRFLOW_CTX_EXECUTION_DATE='2026-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-04T00:00:00+00:00'
+[2026-11-04T17:39:57.648+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:39:57.658+0600] {steps.py:154} INFO - train: C=0.01  val_accuracy=0.9647
+[2026-11-04T17:39:57.662+0600] {steps.py:154} INFO - train: C=0.1   val_accuracy=0.9882
+[2026-11-04T17:39:57.665+0600] {steps.py:154} INFO - train: C=1.0   val_accuracy=0.9882
+[2026-11-04T17:39:57.670+0600] {steps.py:154} INFO - train: C=10.0  val_accuracy=0.9882
+[2026-11-04T17:39:57.671+0600] {steps.py:183} INFO - train: chose C=0.1 (val_acc=0.9882); exported ./data/models/ds=2026-11-04/model.json (version 2026-11-04-9d468ebb)
+[2026-11-04T17:39:57.671+0600] {python.py:240} INFO - Done. Returned value was: ./data/models/ds=2026-11-04/model.json
+[2026-11-04T17:39:57.677+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:39:57.677+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=train_model, run_id=manual__2026-11-04T00:00:00+00:00, execution_date=20261104T000000, start_date=, end_date=20261104T113957
+[2026-11-04T17:39:57.684+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=train_model map_index=-1
+[2026-11-04T17:39:57.696+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=evaluate_model map_index=-1
+[2026-11-04T17:39:57.696+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.evaluate_model manual__2026-11-04T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:39:57.721+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='evaluate_model' AIRFLOW_CTX_EXECUTION_DATE='2026-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-04T00:00:00+00:00'
+[2026-11-04T17:39:57.721+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:39:57.726+0600] {handler.py:155} INFO - {"request_id": "local", "status": 200, "n": 86, "cold_start": true, "latency_ms": 0.836, "init_ms": 0.196}
+[2026-11-04T17:39:57.732+0600] {steps.py:241} INFO - evaluate: accuracy=0.9767 f1_macro=0.9748 auc=0.9936 passed=True
+[2026-11-04T17:39:57.732+0600] {tumor_pipeline_dag.py:103} INFO - Test metrics: {"n_test": 86, "accuracy": 0.976744, "precision_macro": 0.982143, "recall_macro": 0.96875, "f1_macro": 0.97478, "roc_auc": 0.993634, "model_version": "2026-11-04-9d468ebb", "min_accuracy_required": 0.93, "passed_threshold": true}
+[2026-11-04T17:39:57.733+0600] {python.py:240} INFO - Done. Returned value was: {'n_test': 86, 'accuracy': 0.976744, 'precision_macro': 0.982143, 'recall_macro': 0.96875, 'f1_macro': 0.97478, 'roc_auc': 0.993634, 'confusion_matrix': [[30, 2], [0, 54]], 'model_version': '2026-11-04-9d468ebb', 'min_accuracy_required': 0.93, 'passed_threshold': True}
+[2026-11-04T17:39:57.749+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:39:57.749+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=evaluate_model, run_id=manual__2026-11-04T00:00:00+00:00, execution_date=20261104T000000, start_date=, end_date=20261104T113957
+[2026-11-04T17:39:57.761+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=evaluate_model map_index=-1
+[2026-11-04T17:39:57.772+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=package_model map_index=-1
+[2026-11-04T17:39:57.772+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.package_model manual__2026-11-04T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:39:57.796+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='package_model' AIRFLOW_CTX_EXECUTION_DATE='2026-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-04T00:00:00+00:00'
+[2026-11-04T17:39:57.796+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:39:57.803+0600] {steps.py:287} INFO - package: ./build/ds=2026-11-04/function.zip (3385 bytes)
+[2026-11-04T17:39:57.804+0600] {python.py:240} INFO - Done. Returned value was: {'zip': './build/ds=2026-11-04/function.zip', 'zip_bytes': 3385, 'zip_sha256': '5e91eaad3ae9e35c0c7cf3979ea38f0d52e38b8a960747264c81fbd0a9a9fc7e'}
+[2026-11-04T17:39:57.813+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:39:57.813+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=package_model, run_id=manual__2026-11-04T00:00:00+00:00, execution_date=20261104T000000, start_date=, end_date=20261104T113957
+[2026-11-04T17:39:57.821+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=package_model map_index=-1
+[2026-11-04T17:39:57.832+0600] {dag.py:4396} INFO - [DAG TEST] starting task_id=deploy_function map_index=-1
+[2026-11-04T17:39:57.832+0600] {dag.py:4399} INFO - [DAG TEST] running task <TaskInstance: tumor_pipeline.deploy_function manual__2026-11-04T00:00:00+00:00 [scheduled]>
+[2026-11-04T17:39:57.848+0600] {taskinstance.py:3158} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='mlops' AIRFLOW_CTX_DAG_ID='tumor_pipeline' AIRFLOW_CTX_TASK_ID='deploy_function' AIRFLOW_CTX_EXECUTION_DATE='2026-11-04T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-11-04T00:00:00+00:00'
+[2026-11-04T17:39:57.848+0600] {taskinstance.py:740} INFO - ::endgroup::
+[2026-11-04T17:39:57.851+0600] {tumor_pipeline_dag.py:123} INFO - Deploy target: local (package 3385 bytes)
+[2026-11-04T17:39:57.852+0600] {handler.py:155} INFO - {"request_id": "local", "status": 200, "n": 1, "cold_start": true, "latency_ms": 0.05, "init_ms": 0.119}
+[2026-11-04T17:39:57.853+0600] {handler.py:155} INFO - {"request_id": "local", "status": 200, "n": 1, "cold_start": false, "latency_ms": 0.055, "init_ms": null}
+[2026-11-04T17:39:57.853+0600] {steps.py:324} INFO - deploy: target=local (emulated); smoke test passed {'benign': 'benign', 'malignant': 'malignant'}
+[2026-11-04T17:39:57.853+0600] {python.py:240} INFO - Done. Returned value was: {'target': 'local', 'status': 'smoke-tested', 'smoke': {'benign': 'benign', 'malignant': 'malignant'}}
+[2026-11-04T17:39:57.864+0600] {taskinstance.py:349} INFO - ::group::Post task execution logs
+[2026-11-04T17:39:57.864+0600] {taskinstance.py:361} INFO - Marking task as SUCCESS. dag_id=tumor_pipeline, task_id=deploy_function, run_id=manual__2026-11-04T00:00:00+00:00, execution_date=20261104T000000, start_date=, end_date=20261104T113957
+[2026-11-04T17:39:57.872+0600] {dag.py:4410} INFO - [DAG TEST] end task task_id=deploy_function map_index=-1
+[2026-11-04T17:39:57.876+0600] {dagrun.py:854} INFO - Marking run <DagRun tumor_pipeline @ 2026-11-04 00:00:00+00:00: manual__2026-11-04T00:00:00+00:00, state:running, queued_at: None. externally triggered: False> successful
+[2026-11-04T17:39:57.877+0600] {dagrun.py:905} INFO - DagRun Finished: dag_id=tumor_pipeline, execution_date=2026-11-04 00:00:00+00:00, run_id=manual__2026-11-04T00:00:00+00:00, run_start_date=2026-11-04 00:00:00+00:00, run_end_date=2026-11-04 11:39:57.876919+00:00, run_duration=41997.876919, state=success, external_trigger=False, run_type=manual, data_interval_start=2026-11-03 00:00:00+00:00, data_interval_end=2026-11-04 00:00:00+00:00, dag_hash=None

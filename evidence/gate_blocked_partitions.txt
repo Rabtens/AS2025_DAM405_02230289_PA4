@@ -1,0 +1,6 @@
+Partitions created per stage for the corrupted date (ds=2026-11-05):
+  raw         created
+  validation  created
+  processed   NOT created
+  models      NOT created
+  metrics     NOT created

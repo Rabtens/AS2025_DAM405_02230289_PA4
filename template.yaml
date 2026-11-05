@@ -1,0 +1,57 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Serverless tumour-classification inference (DAM405 PA4).
+  A single Lambda function behind an API Gateway HTTP API, defined as code.
+
+Parameters:
+  Stage:
+    Type: String
+    Default: dev
+    AllowedValues: [dev, staging, prod]
+    Description: Deployment stage, used in resource names.
+  LogRetentionDays:
+    Type: Number
+    Default: 14
+    Description: CloudWatch Logs retention for the function.
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Architectures: [arm64]      # Graviton: cheaper per GB-second
+    MemorySize: 128             # model is tiny; raise only if p95 latency demands it
+    Timeout: 5                  # fail fast; inference takes microseconds
+    Environment:
+      Variables:
+        LOG_LEVEL: INFO
+
+Resources:
+  InferenceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub tumor-classifier-${Stage}
+      Description: Logistic-regression tumour classifier (stdlib-only handler)
+      CodeUri: lambda_fn/
+      Handler: handler.lambda_handler
+      AutoPublishAlias: live    # immutable versions + alias enable safe rollbacks
+      Events:
+        Predict:
+          Type: HttpApi
+          Properties:
+            Path: /predict
+            Method: post
+
+  # Explicit log group so retention is managed (default is "never expire").
+  InferenceLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub /aws/lambda/tumor-classifier-${Stage}
+      RetentionInDays: !Ref LogRetentionDays
+
+Outputs:
+  PredictUrl:
+    Description: POST endpoint for inference
+    Value: !Sub https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/predict
+  FunctionName:
+    Description: Lambda function name
+    Value: !Ref InferenceFunction
